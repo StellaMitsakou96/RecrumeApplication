@@ -8,4 +8,4 @@ It defines how our clients, team, and audience see the product and its functiona
 
 Class diagram of the project presents below:
 
-![Nice guy](file://C:\Users\User\Desktop\RecrumeApplication\src\main\resources\classDiagram.png)
+![Class_Diagram](file://C:\Users\User\Desktop\RecrumeApplication\src\main\resources\classDiagram.png)
