@@ -17,13 +17,10 @@ public class ReportingService implements IReportable{
         this.skillRepo = skillRepo;
     }
 
-/*    public List<Query> getTenMost() {
-        List<Query> skills = queryDTORepo.findTenMoreFamousSkills();
-//        List<Skill> skills =
-//                System.out.println("------------------>" + skills.size());
-        return skills;
-    }*/
-
+    /**
+     * find most used Skills by their frequency of appearance
+     * @return skill name and their frequency of use
+     */
     public List<String> findMostFrequent(){
         List<Object[]> query = skillRepo.findMostRequested(); //Sou gyrnaei monodiastato pinaka me 2 theseis.
         List<String> frequency = new ArrayList<>();

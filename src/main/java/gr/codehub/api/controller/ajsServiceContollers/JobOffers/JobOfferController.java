@@ -55,7 +55,7 @@ public class JobOfferController {
     /**
      * search the applicant by the given id
      * @param applicant_id
-     * @return the offer of the given applicant
+     * @return all offers of the given applicant
      */
     @GetMapping("joboffer/applicant/{applicant_id}")
     public List<JobOffer> getJobOfferByName(@PathVariable int applicant_id) throws JobOfferApplicantIdNotFoundException {
@@ -66,7 +66,7 @@ public class JobOfferController {
     /**
      * search the job offer by skill name
      * @param skill skill name
-     * @return the job offer
+     * @return the job offers
      */
     @GetMapping("joboffers/skill/{skill}")
     public List<JobOffer> getJobOffersBySkill(@PathVariable String skill) {

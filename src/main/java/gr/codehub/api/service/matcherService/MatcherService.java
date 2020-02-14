@@ -31,6 +31,11 @@ public class MatcherService implements IMatcherable{
         this.skillSetsRepo = skillSetsRepo;
     }
 
+    /**
+     * create the manual match
+     * @param matcherDTO1
+     * @return the match and save throw the suitable repository in DB
+     */
     public Matcher getManualMatch(MatcherDTO matcherDTO1) {
         Matcher matcher = new Matcher();
         matcher.setJobOffer(jobOffersRepo.findFirstById(matcherDTO1.getJob_offer_id()));
@@ -38,29 +43,24 @@ public class MatcherService implements IMatcherable{
         return matchersRepo.save(matcher);
     }
 
+    /**
+     * create an automated match by a given applicant_id
+     * @param matcherDTO1
+     * @return the automated match
+     */
     public Matcher getAutomatedMatch(MatcherDTO matcherDTO1) {
-        System.out.println("----------------------------------------------------------------------------------");
         List<JobOffer> jobOffers = jobOffersRepo.findByApplicantIdIsNull();  //Pare tin job offer pou exei applicant id iso me null
-        System.out.println(jobOffers.size());
         Applicant applicant = applicantsRepo.findFirstById(matcherDTO1.getApplicant_id()); //pare ton dwsmeno applicant apo ti vash
-        System.out.println(applicant.getSkillSets().get(0).getSkill().getSkillName());
-        for (JobOffer jobOffer : jobOffers) { //Dietrekse to table job offer me applicant_id == null
-            //Pare ta skills tou antisoixou job offer kai valta sth lista.
-            //boolean thisJobNotCovered = false;
+        for (JobOffer jobOffer : jobOffers) {
             int counter = 0;
-            System.out.println("setting counters...");
             for (SkillSetForJobOffer aS : jobOffer.getSkillSetForJobOffers()) {  //Dietrekse ti lista apo ta skill tou job offer pou eftiakses apo panw
                 String skillName = aS.getSkill().getSkillName(); //Pairnei to onoma tou skill tou job
-                System.out.println("JobSkill: " + skillName);
                 for (SkillSet sk :applicant.getSkillSets()) {
-                    System.out.println("Applicant name:" + sk.getSkill().getSkillName());
                     if (sk.getSkill().getSkillName().equals(skillName)) { //elegxei an ta dyo skill einai idia.
-                        System.out.println("found one");
                         counter++;
                         break;
                     }
                 }
-                System.out.println("TI GINETAI EDO "+jobOffer.getSkillSetForJobOffers().size() );
                 if(counter == jobOffer.getSkillSetForJobOffers().size() ){
                     Matcher matcher = new Matcher();
                     matcher.setJobOffer(jobOffer);
@@ -73,10 +73,15 @@ public class MatcherService implements IMatcherable{
                 }
             }
         }
-        System.out.println("----------------------------------------------------------------------------------");
         return null;
     }
 
+    /**
+     * update a manual match
+     * @param id
+     * @param matcherDTO
+     * @return the updated match
+     */
     public Matcher updateOne(int id, MatcherDTO matcherDTO) {
         Matcher matcher = matchersRepo.findById(id);
         matcher.setApplicant(applicantsRepo.findFirstById(matcherDTO.getApplicant_id()));
@@ -84,6 +89,11 @@ public class MatcherService implements IMatcherable{
         return matchersRepo.save(matcher);
     }
 
+    /**
+     * finalize a manual match - soft delete of the match
+     * @param id
+     * @return a String message
+     */
     public String finalizedMatch(int id) {
         Matcher matcher = matchersRepo.findById(id);
         matcher.setFinalized(true);
@@ -91,6 +101,12 @@ public class MatcherService implements IMatcherable{
         return "Your match is finalized";
     }
 
+
+    /**
+     * soft delete of an automated match
+     * @param id
+     * @return a String message
+     */
     public String finalizedAutomatedMatch(int id) {
         Matcher matcher = matchersRepo.findById(id);
         matcher.setFinalized(true);

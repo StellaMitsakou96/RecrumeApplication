@@ -23,10 +23,4 @@ public interface SkillRepository extends JpaRepository<Skill, Integer> {
             "            ORDER BY COUNT (skill.skill_name) DESC;", nativeQuery = true)
     List<Object[]> findMostRequested();
 
-/*    @org.springframework.data.jpa.repository.Query(value = "SELECT id, COUNT(*) FROM skill_set_for_job_offer GROUP BY id ORDER BY id DESC ", nativeQuery = true)
-    List<Query> findTenMoreFamousSkills();
-
-    @org.springframework.data.jpa.repository.Query(value = "SELECT id FROM skill_set_for_job_offer GROUP BY id ORDER BY id DESC ", nativeQuery = true)
-    List<Skill> findWhatever();*/
-
 }
