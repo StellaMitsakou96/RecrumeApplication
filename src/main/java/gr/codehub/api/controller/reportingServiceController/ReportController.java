@@ -13,14 +13,10 @@ public class ReportController {
     @Autowired
     ReportingService reportingService;
 
-    /**
-     * find the five most famous skills
-     *
-     * @return a list with name of skill and each how many times it appears in job offer's list
-     */
     @GetMapping("mostRequestedAndOfferedSkills")
     public List<String> getMostFamousSkills() {
         return reportingService.findMostFrequent();
     }
+
 
 }

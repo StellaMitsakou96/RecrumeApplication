@@ -25,7 +25,7 @@ import java.util.Iterator;
 import java.util.List;
 
 @Service
-public class SkillService implements ISkillable{
+public class SkillService implements ISkillable {
     private ApplicantRepository applicantsRepo;
 
     private CompanyRepository companiesRepo;
@@ -58,12 +58,12 @@ public class SkillService implements ISkillable{
     /**
      * @param id skill id
      * @return from data base skill by id
-     * throws SkillIdNotFoundException
+     * @throws SkillIdNotFoundException
      */
     public Skill getSkillByIdFromDB(int id) throws SkillIdNotFoundException {
-        //return skillRepo.findById(id);
+
         Skill skill = skillRepo.findById(id);
-        if (skill == null){
+        if (skill == null) {
             throw new SkillIdNotFoundException("Skill = " + skill);
         }
         return skillRepo.findById(id);
@@ -75,7 +75,7 @@ public class SkillService implements ISkillable{
      * @param skillDTO
      * @return the new skill and save in data base
      */
-    public Skill save(SkillDTO skillDTO) {   //Method post for skill from recrume
+    public Skill save(SkillDTO skillDTO) {
         Skill skill = new Skill();
         skill.setSkillName(skillDTO.getSkillName());
         return skillRepo.save(skill);
@@ -124,6 +124,7 @@ public class SkillService implements ISkillable{
     /**
      * update the active status false
      * in order to implement soft delete of a skill
+     *
      * @param id skill id
      * @return ok if the implementation fulfilled
      */
@@ -161,6 +162,7 @@ public class SkillService implements ISkillable{
 
     /**
      * merge two skills into new one
+     *
      * @param skillTwoDTO
      * @return new skill
      */
@@ -172,6 +174,7 @@ public class SkillService implements ISkillable{
 
     /**
      * splits one skill in two new skills
+     *
      * @param skillDTO
      * @return two new skills
      */
@@ -202,6 +205,7 @@ public class SkillService implements ISkillable{
 
     /**
      * function called in split() method
+     *
      * @param nameSkill
      * @return the first skill, before symbol (-), in data base
      */
@@ -214,6 +218,7 @@ public class SkillService implements ISkillable{
 
     /**
      * function called in split() method
+     *
      * @param nameSkill
      * @return the first skill, before symbol (_), in data base
      */
@@ -226,6 +231,7 @@ public class SkillService implements ISkillable{
 
     /**
      * function called in split() method
+     *
      * @param nameSkill
      * @return the first skill, before symbol space, in data base
      */

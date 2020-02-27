@@ -30,6 +30,7 @@ public class SkillController {
 
     /**
      * search all skills by id
+     *
      * @param id of the skill
      * @return the skill by the given id
      * @throws SkillIdNotFoundException
@@ -50,6 +51,7 @@ public class SkillController {
 
     /**
      * request for adding a new skill
+     *
      * @param skillDTO
      * @return the new skill
      */
@@ -60,6 +62,7 @@ public class SkillController {
 
     /**
      * merge two skills into one new
+     *
      * @param skillTwoDTO
      * @return the new skill
      */
@@ -70,6 +73,7 @@ public class SkillController {
 
     /**
      * split one skill into two new skills
+     *
      * @param skillDTO
      * @return two new skills
      */
@@ -80,6 +84,7 @@ public class SkillController {
 
     /**
      * request for adding new skill for applicant
+     *
      * @param skillSetDTO
      * @return the new skill
      * @throws Exception
@@ -91,6 +96,7 @@ public class SkillController {
 
     /**
      * request for adding new skill for job offer
+     *
      * @param skillSetForJobOfferDTO
      * @return the new skill
      * @throws Exception
@@ -102,22 +108,24 @@ public class SkillController {
 
     /**
      * request for updating skill by id
-     * @param id skill id
+     *
+     * @param id       skill id
      * @param skillDTO
      * @return the updated skill
      */
     @PutMapping("skill/{id}")
-    public Skill updateOne(@PathVariable int id, @RequestBody SkillDTO skillDTO){
+    public Skill updateOne(@PathVariable int id, @RequestBody SkillDTO skillDTO) {
         return skillService.updateOne(id, skillDTO);
     }
 
     /**
      * request for soft delete by skill id
+     *
      * @param id skill id
      * @return "ok" if soft delete implemented
      */
     @PutMapping("skill/inactive/{id}")
-    public String softDelete( @PathVariable int id) {
+    public String softDelete(@PathVariable int id) {
         return skillService.softDelete(id);
     }
 }

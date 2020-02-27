@@ -37,10 +37,9 @@ public class CompanyService implements ICompanable {
     /**
      * @param region
      * @return from data base the first company by region
-     * throws CompanyRegionNotFoundException
+     * @throws CompanyRegionNotFoundException
      */
     public Company getCompanyByRegion(String region) throws CompanyRegionNotFoundException {
-        // return companiesRepo.findFirstByRegion(region);
         Company company = companiesRepo.findFirstByRegion(region);
         if (company == null) {
             throw new CompanyRegionNotFoundException("Region = " + region);
@@ -51,10 +50,9 @@ public class CompanyService implements ICompanable {
     /**
      * @param region
      * @return from database all companies by the given region
-     * throws CompanyRegionNotFoundException
+     * @throws CompanyRegionNotFoundException
      */
     public Optional<List<Company>> getCompaniesByRegion(String region) throws CompanyRegionNotFoundException {
-        //return companiesRepo.findAllByRegion(region);
         Optional<List<Company>> company = companiesRepo.findAllByRegion(region);
         if (!company.isPresent()) {
             throw new CompanyRegionNotFoundException("Region = " + region);

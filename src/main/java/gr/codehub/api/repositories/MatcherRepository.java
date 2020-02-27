@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MatcherRepository extends JpaRepository<Matcher, Integer> {
     Matcher findById(int id);
-   // Matcher deleteById(int id);
+
 }

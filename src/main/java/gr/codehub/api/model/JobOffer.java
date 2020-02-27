@@ -29,12 +29,9 @@ public class JobOffer {
     @JsonIgnore
     private Applicant applicant;
 
-    //----------------------------------------------------------
-    @OneToMany(mappedBy="jobOffer", cascade = CascadeType.ALL)
+
+    @OneToMany(mappedBy = "jobOffer", cascade = CascadeType.ALL)
     private List<SkillSetForJobOffer> skillSetForJobOffers;
 
-    //----------------------------------------------------------
-//    @OneToOne(mappedBy = "matcher")
-//    private Matcher matcher;
 
 }

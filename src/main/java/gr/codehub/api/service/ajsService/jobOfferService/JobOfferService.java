@@ -66,11 +66,7 @@ public class JobOfferService implements IJobOfferable {
      * @throws JobOfferIdNotFoundException if the job offer by the given id does not exist in data base
      */
     public JobOffer getJobOfferById(int id) throws JobOfferIdNotFoundException {
-       /* //Deuteros tropos.
-        return jobOffersRepo.findFirstByCompanyId(id);
-       *//* //Prwtos tropos.
-        JobOffer jo = jobOffersRepo.findById(id).get();
-        return jo;*/
+
         JobOffer jobOffer = jobOffersRepo.findFirstByCompanyId(id);
         if (jobOffer == null) {
             throw new JobOfferIdNotFoundException("Job Offer id= " + id);
@@ -79,14 +75,13 @@ public class JobOfferService implements IJobOfferable {
     }
 
     /**
-     * get the job offer by id
+     * get the job offer by name
      *
      * @param name job offer name
      * @return the job offer
      * @throws JobOfferNameNotFoundException if the name of job offer does not exist
      */
     public List<JobOffer> getJobOfferByNameFromDB(String name) throws JobOfferNameNotFoundException {
-       // return jobOffersRepo.findByName(name);
         List<JobOffer> jobOffer = jobOffersRepo.findByName(name);
         if (jobOffer.isEmpty()) {
             throw new JobOfferNameNotFoundException("Job offer name= " + name);
@@ -101,8 +96,7 @@ public class JobOfferService implements IJobOfferable {
      * @return the job offers
      */
     public List<JobOffer> getJobOffersBySkillFromDB(String skill) {
-        //return  skillSetForJobOffers.findAllBySkillFromRecrume(skill);
-        // return jobOffersRepo.findBySkill(skill);
+
         Iterator<JobOffer> jobOfferIterator = jobOffersRepo.findAll().iterator();
         List<JobOffer> requestedJobOffers = new ArrayList<>();
         while (jobOfferIterator.hasNext()) {
@@ -159,11 +153,7 @@ public class JobOfferService implements IJobOfferable {
      * @throws JobOfferApplicantIdNotFoundException
      */
     public List<JobOffer> getJobOffersByApplicantID(int id) throws JobOfferApplicantIdNotFoundException {
-        /*if (id == 0) {
-            return jobOffersRepo.findByApplicantIdIsNull();
-        } else {
-            return jobOffersRepo.findByApplicantId(id);
-        }*/
+
         List<JobOffer> jobOffer = jobOffersRepo.findByApplicantId(id);
         if(id == 0){
             return jobOffersRepo.findByApplicantIdIsNull();
@@ -172,7 +162,7 @@ public class JobOfferService implements IJobOfferable {
             throw new JobOfferApplicantIdNotFoundException("Applicant id= " + id);
         }
         return jobOffersRepo.findByApplicantId(id);
-        //return jobOffer;
+
     }
 
     /**

@@ -7,11 +7,11 @@ public enum LevelEnumarator {
 
     private int dbValue;
 
-    LevelEnumarator(int dbValue){
+    LevelEnumarator(int dbValue) {
         this.dbValue = dbValue;
     }
 
-    public int getDbValue(){
+    public int getDbValue() {
         return dbValue;
     }
 

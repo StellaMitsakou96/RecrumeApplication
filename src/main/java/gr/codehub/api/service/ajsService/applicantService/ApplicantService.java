@@ -65,7 +65,7 @@ public class ApplicantService implements IApplicantable {
      * @throws ApplicantIdNotFoundException if the applicant by the given id does not exist in database
      */
     public Applicant getApplicantFromDB(int id) throws ApplicantIdNotFoundException {
-        //return applicantsRepo.findById(id);
+
         Applicant applicant = applicantsRepo.findById(id);
         if (applicant == null) {
             throw new ApplicantIdNotFoundException("Applicant id = " + id);
@@ -82,7 +82,7 @@ public class ApplicantService implements IApplicantable {
      *                                            does not exist in database
      */
     public Applicant getApplicantByNameFromDB(String lastName) throws ApplicantLastNameNotFoundException {
-        //return applicantsRepo.findByName(lastName);
+
         Applicant applicant = applicantsRepo.findByName(lastName);
         if (applicant == null) {
             throw new ApplicantLastNameNotFoundException("Applicant last Name = " + lastName);
@@ -95,7 +95,6 @@ public class ApplicantService implements IApplicantable {
      * @return from data base all applicants by region
      */
     public Optional<List<Applicant>> getApplicantByRegionFromDB(String region) throws ApplicantRegionNotFoundException {
-        //return applicantsRepo.findAllByRegion(region);
         Optional<List<Applicant>> applicants = applicantsRepo.findAllByRegion(region);
         if (!applicants.isPresent()) {
             throw new ApplicantRegionNotFoundException("Region= " + region);
@@ -130,7 +129,7 @@ public class ApplicantService implements IApplicantable {
      * @param applicantDTO
      * @return the new applicant and save in data base
      */
-    public Applicant save(ApplicantDTO applicantDTO) {   //Method post for applicants
+    public Applicant save(ApplicantDTO applicantDTO) {
         Applicant applicant = new Applicant();
         applicant.setFirstName(applicantDTO.getFirstName());
         applicant.setLastName(applicantDTO.getLastName());

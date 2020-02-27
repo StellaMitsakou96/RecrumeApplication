@@ -19,8 +19,4 @@ public interface CompanyRepository extends JpaRepository<Company, Integer> {
     Optional<List<Company>> findAllByCompanyName(String companyName);
 
 
-//
-//    @Query(value = "SELECT *  FROM job_offer WHERE region = :region", nativeQuery = true)
-//    Optional<Company> findByRegion(@Param("region") String region);
-
 }

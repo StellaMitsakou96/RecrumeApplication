@@ -23,4 +23,5 @@ public interface SkillRepository extends JpaRepository<Skill, Integer> {
             "            ORDER BY COUNT (skill.skill_name) DESC;", nativeQuery = true)
     List<Object[]> findMostRequested();
 
+
 }

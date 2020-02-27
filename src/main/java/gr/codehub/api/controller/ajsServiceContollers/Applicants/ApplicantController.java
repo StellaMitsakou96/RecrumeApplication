@@ -15,16 +15,16 @@ import java.util.Optional;
 
 @RestController
 public class ApplicantController {
-//    @Autowired
-//    private AJSService ajsService;
+
 
     @Autowired
     private ApplicantService applicantService;
+
     /**
      * @return all applicants
      */
     @GetMapping("applicants")
-    public List<Applicant> getAllApplicants()  {
+    public List<Applicant> getAllApplicants() {
         return applicantService.getAllApplicantsFromDB();
     }
 
@@ -48,15 +48,16 @@ public class ApplicantController {
      * @throws ApplicantLastNameNotFoundException
      */
     @GetMapping("applicants/{lastName}")
-    public Applicant getApplicantByName(@PathVariable String lastName)  throws ApplicantLastNameNotFoundException {
+    public Applicant getApplicantByName(@PathVariable String lastName) throws ApplicantLastNameNotFoundException {
         return applicantService.getApplicantByNameFromDB(lastName);
     }
 
     /**
      * search all applicants by region
+     *
      * @param region
      * @return the applicant by the given region
-     * @throws  ApplicantRegionNotFoundException
+     * @throws ApplicantRegionNotFoundException
      */
     @GetMapping("applicantss/{region}")
     public Optional<List<Applicant>> getApplicantByRegion(@PathVariable String region) throws ApplicantRegionNotFoundException {
@@ -66,12 +67,13 @@ public class ApplicantController {
 
     /**
      * search the applicants's skill by skill name
+     *
      * @param skill applicant skill name
      * @return applicants
      */
     @GetMapping("applicants/skill/{skill}")
     public List<Applicant> getApplicantsBySkill(@PathVariable String skill) {
-        List<Applicant> applicants =  applicantService.getApplicantsBySkillFromDB(skill);
+        List<Applicant> applicants = applicantService.getApplicantsBySkillFromDB(skill);
         return applicants;
     }
 
@@ -86,6 +88,7 @@ public class ApplicantController {
 
     /**
      * request for adding a new applicant
+     *
      * @param applicantDTO
      * @return the new applicant
      */

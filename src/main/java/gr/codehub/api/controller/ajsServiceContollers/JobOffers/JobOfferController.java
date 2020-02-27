@@ -21,7 +21,7 @@ public class JobOfferController {
      * @return return all job offers
      */
     @GetMapping("joboffers")
-    public List<JobOffer> getAllJobOffers(){
+    public List<JobOffer> getAllJobOffers() {
         List<JobOffer> offers = jobOfferService.getJobOffers();
         System.out.println(offers.size());
         return offers;
@@ -29,6 +29,7 @@ public class JobOfferController {
 
     /**
      * search job offers by id
+     *
      * @param id job offer id
      * @return the job offer by the given id
      * @throws JobOfferIdNotFoundException
@@ -41,36 +42,39 @@ public class JobOfferController {
 
     /**
      * search te job offer by the given name
+     *
      * @param name job offer name
      * @return the job offer
      * @throws JobOfferNameNotFoundException
      */
     @GetMapping("joboffer/{name}")
     public List<JobOffer> getJobOfferByName(@PathVariable String name) throws JobOfferNameNotFoundException {
-        List<JobOffer> offer =  jobOfferService.getJobOfferByNameFromDB(name);
+        List<JobOffer> offer = jobOfferService.getJobOfferByNameFromDB(name);
         return offer;
     }
 
 
     /**
      * search the applicant by the given id
+     *
      * @param applicant_id
      * @return all offers of the given applicant
      */
     @GetMapping("joboffer/applicant/{applicant_id}")
     public List<JobOffer> getJobOfferByName(@PathVariable int applicant_id) throws JobOfferApplicantIdNotFoundException {
-        List<JobOffer> offers =  jobOfferService.getJobOffersByApplicantID(applicant_id);
+        List<JobOffer> offers = jobOfferService.getJobOffersByApplicantID(applicant_id);
         return offers;
     }
 
     /**
      * search the job offer by skill name
+     *
      * @param skill skill name
      * @return the job offers
      */
     @GetMapping("joboffers/skill/{skill}")
     public List<JobOffer> getJobOffersBySkill(@PathVariable String skill) {
-        List<JobOffer> offer =  jobOfferService.getJobOffersBySkillFromDB(skill);
+        List<JobOffer> offer = jobOfferService.getJobOffersBySkillFromDB(skill);
         return offer;
     }
 
@@ -87,6 +91,7 @@ public class JobOfferController {
 
     /**
      * request for new job offer
+     *
      * @param jobOfferDTO
      * @return the new job offer
      */

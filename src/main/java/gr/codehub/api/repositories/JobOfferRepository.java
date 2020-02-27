@@ -10,8 +10,7 @@ import java.util.List;
 
 @Repository
 public interface JobOfferRepository extends JpaRepository<JobOffer, Integer> {
-   // JobOffer findFirstByCompanyId(int id);
-   //H grammh 10 me tis grammes [13, 14] einai idies.
+
    @Query(value = "SELECT *  FROM job_offer WHERE id = :id", nativeQuery = true)
    JobOffer findFirstByCompanyId(@Param("id") int id);
 
@@ -24,7 +23,7 @@ public interface JobOfferRepository extends JpaRepository<JobOffer, Integer> {
 //    List<JobOffer> findByNullApplicant(@Param("id") int id);
 
     List<JobOffer> findByApplicantId(int id);
-    //all unmatched:
+
     List<JobOffer> findByApplicantIdIsNull();
 
 
@@ -33,5 +32,5 @@ public interface JobOfferRepository extends JpaRepository<JobOffer, Integer> {
 //    @Query(value = "SELECT job_offer_name FROM job_offer WHERE id = (SELECT job_offer_id FROM skill_set_for_job_offer WHERE skill_from_recrume_id = (SELECT id FROM  skill_from_recrume WHERE skill_name = :name))", nativeQuery = true)
 //    Optional<List<JobOffer>> findBySkill(String skill);
 
-    //JobOffer findByDate(Date date);
+
 }

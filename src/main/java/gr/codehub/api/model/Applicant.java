@@ -25,11 +25,11 @@ public class Applicant {
     private LevelEnumarator levelEnumarator;
     private String region;
 
-    @OneToMany(mappedBy="applicant", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "applicant", cascade = CascadeType.ALL)
     private List<JobOffer> jobOffers;
 
 
-    @OneToMany(mappedBy="applicant", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "applicant", cascade = CascadeType.ALL)
     private List<SkillSet> skillSets;
 
     public Applicant(String stringCellValue, String stringCellValue1, String stringCellValue2, String stringCellValue3, String stringCellValue4) {

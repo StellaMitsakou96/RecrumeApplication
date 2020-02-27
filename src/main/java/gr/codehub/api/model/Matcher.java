@@ -15,8 +15,7 @@ public class Matcher {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private int type; //0 manual, 1 automatic
-    //to be enum
+    private int type;
 
 
     @Column(columnDefinition = "bit default 0")

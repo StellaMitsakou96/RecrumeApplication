@@ -49,11 +49,9 @@ public class CompanyController {
      * @return the companies
      * @throws CompanyRegionNotFoundException
      */
-    @GetMapping("companies/{region}") //Enw edw sou gyrnaw oles tis etaireies me region tade.
+    @GetMapping("companies/{region}")
     public Optional<List<Company>> getJobOffersByRegion(@PathVariable String region) throws CompanyRegionNotFoundException {
         Optional<List<Company>> companies = companyService.getCompaniesByRegion(region);
-        //System.out.println(offer);
-        //----> Skills.Java.setSkillToDB();
         return companies;
     }
 
@@ -67,8 +65,7 @@ public class CompanyController {
     @GetMapping("companies/{nameOfCompany}/joboffer/{nameOfJob}")
     public List<JobOffer> getJobOffersFromACompany(@PathVariable String nameOfCompany, @PathVariable String nameOfJob) {
         List<JobOffer> jobOffers = jobOfferService.getJobOfferOfACompany(nameOfCompany, nameOfJob);
-        //System.out.println(offer);
-        //----> Skills.Java.setSkillToDB();
+
         return jobOffers;
     }
 

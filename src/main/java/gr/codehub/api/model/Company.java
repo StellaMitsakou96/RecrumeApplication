@@ -19,6 +19,6 @@ public class Company {
     private String companyName;
     private String region;
 
-    @OneToMany(mappedBy="company", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
     private List<JobOffer> jobOffers;
 }

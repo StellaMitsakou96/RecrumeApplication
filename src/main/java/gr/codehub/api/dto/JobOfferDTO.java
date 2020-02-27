@@ -13,6 +13,5 @@ public class JobOfferDTO {
 
     private int company_id;
     private int applicant_id;
-   // List<CompanyDTO> companyDTOs;
-   // List<ApplicantDTO> applicantDTOs;
+
 }

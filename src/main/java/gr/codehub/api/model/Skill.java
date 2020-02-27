@@ -29,18 +29,15 @@ public class Skill {
     @Column(columnDefinition = "bit default 1")
     private boolean active;
 
-    //private List<Skill> skills;
 
-    @OneToMany(mappedBy="skill", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "skill", cascade = CascadeType.ALL)
     private List<SkillSet> skillSets;
 
 
-    //----------------------------------------------------------
-    @OneToMany(mappedBy="skill", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "skill", cascade = CascadeType.ALL)
     private List<SkillSetForJobOffer> skillSetForJobOffers;
 
-    public Skill(String skillName)
-{
-    this.skillName=skillName;
-}
+    public Skill(String skillName) {
+        this.skillName = skillName;
+    }
 }
